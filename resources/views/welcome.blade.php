@@ -66,12 +66,14 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
+            <div class="top-right links">
+                @if (Auth::check())
+                    <a href="{{ url('/home') }}">Welcome, {{ Auth::user()->name }}</a>
+                @else
                     <a href="{{ url('/login') }}">Login</a>
                     <a href="{{ url('/register') }}">Register</a>
-                </div>
-            @endif
+                @endif
+            </div>
 
             <div class="content">
                 <div class="title m-b-md">
